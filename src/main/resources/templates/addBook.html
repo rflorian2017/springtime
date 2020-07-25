@@ -5,17 +5,17 @@
     <title>Add book</title>
 </head>
 <body>
-    <form action="#"
-          th:method="${book.book_id > 0 ? 'put' : 'post'}"
-          th:action="${'/books' + (book.book_id > 0 ? '/' + book.book_id.toString() : '')}"
-          th:object="${book}">
-        <label for="title">Title:</label>
-        <input id="title" th:field="*{title}" />
-        <label for="subtitle">Subtitle:</label>
-        <input id="subtitle" th:field="*{subtitle}" />
-        <input type="submit" value="Submit" />
-        <input type="reset" value="Reset form" />
-        <a href="/books">Back</a>
-    </form>
+<form
+        th:action="@{/addbook}"
+        th:object="${book}"
+        method="post">
+    <label for="title">Title:</label>
+    <input id="title" th:field="*{title}"/>
+    <label for="subtitle">Subtitle:</label>
+    <input id="subtitle" th:field="*{subtitle}"/>
+    <input type="submit" value="Submit"/>
+    <input type="reset" value="Reset form"/>
+    <a href="/books">Back</a>
+</form>
 </body>
 </html>
