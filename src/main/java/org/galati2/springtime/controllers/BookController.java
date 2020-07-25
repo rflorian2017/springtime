@@ -25,7 +25,13 @@ public class BookController {
     public String addBook(@ModelAttribute Book book) {
         bookService.saveBook(book);
 
-        return "/books";
+        return "/allbooks";
+    }
+
+    @GetMapping("/allbooks")
+    public String showAllBooks(Model model) {
+        model.addAttribute("books", bookService.getBooks());
+        return "booksList";
     }
 
 }

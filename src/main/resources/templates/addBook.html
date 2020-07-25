@@ -1,21 +1,77 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+
+    <script type="text/javascript"
+            src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
     <meta charset="UTF-8">
     <title>Add book</title>
+
+    <script>
+        $(document).ready(function() {
+            $('select').formSelect();
+        });
+        $(document).ready(function(){
+            $('.sidenav').sidenav();
+        });
+
+
+
+    </script>
+
+    <nav>
+        <div class="nav-wrapper">
+            <a class="right" th:href="@{/logout}">Logout</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a th:href="@{/}">Home</a></li>
+                <li><a th:href="@{/allbooks}">Books</a></li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/allbooks}">Books</a></li>
+
+    </ul>
 </head>
 <body>
-<form
-        th:action="@{/addbook}"
-        th:object="${book}"
-        method="post">
-    <label for="title">Title:</label>
-    <input id="title" th:field="*{title}"/>
-    <label for="subtitle">Subtitle:</label>
-    <input id="subtitle" th:field="*{subtitle}"/>
-    <input type="submit" value="Submit"/>
-    <input type="reset" value="Reset form"/>
-    <a href="/books">Back</a>
-</form>
+<div class="container">
+    <form class="col s12"
+            th:action="@{/addbook}"
+            th:object="${book}"
+            method="post">
+        <div class="row">
+            <div class="input-field col s12">
+                <label for="title">Title:</label>
+                <input id="title" th:field="*{title}"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <label for="subtitle">Subtitle:</label>
+                <input id="subtitle" th:field="*{subtitle}"/>
+            </div>
+        </div>
+
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+<!--        <button type="reset" value="Reset form"/>-->
+    </form>
+</div>
 </body>
 </html>
