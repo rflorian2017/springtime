@@ -29,6 +29,7 @@
 
 
 
+
     </script>
 
     <nav>
@@ -50,23 +51,25 @@
     </ul>
 </head>
 <body>
+<div class="container">
     <p th:text="'Here is my awesome ' + ${books.size()} + ' books list'"></p>
     <a th:href="@{/addbook}">Add a book</a>
     <table border="0">
         <thead>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Subtitle</th>
-            <th>Action</th>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Subtitle</th>
+        <th>Action</th>
         </thead>
         <tbody>
-            <tr th:each="book : ${books}">
-                <td th:text="${book.getBook_id()}"></td>
-                <td th:text="${book.getTitle()}"></td>
-                <td th:text="${book.getSubtitle()}"></td>
-                <td><a th:href="'/books/' + ${book.getBook_id()}">Edit</a></td>
-            </tr>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.getBook_id()}"></td>
+            <td th:text="${book.getTitle()}"></td>
+            <td th:text="${book.getSubtitle()}"></td>
+            <td><a th:href="'/books/' + ${book.getBook_id()}">Edit</a></td>
+        </tr>
         </tbody>
     </table>
+</div>
 </body>
 </html>
